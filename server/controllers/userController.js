@@ -1,6 +1,14 @@
-const { json } = require('express');
 const User = require("../models/models");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const generateJwt = (id, login, email) => {
+    return jwt.sign(
+        { id, login, email }, 
+        process.env.SECRET_KEY,
+        { expiresIn: '24h' }
+    )
+}
 
 class UserController {
     async login(req, res) {
@@ -28,8 +36,9 @@ class UserController {
         const hash_password = await bcrypt.hash(password, 10);
 
         const user = await User.create({ login, email, password: hash_password });
+        const token = generateJwt(user.id, user.login, user.email);
 
-        return res.json(user);
+        return res.json({ token });
     }
 }
 

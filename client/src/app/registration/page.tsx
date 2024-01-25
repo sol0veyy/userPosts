@@ -1,5 +1,4 @@
-import { FORMERR } from "dns"
-import "./style.css"
+import "../style/style.css"
 
 export default function Page() {
     return (
