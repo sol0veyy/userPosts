@@ -1,11 +1,8 @@
 .registration__block {
+    display: flex;
+    flex-flow: column;
     margin-top: 140px;
-
-
-    background-color: azure
-    filteralpha(opacity=x);
-
-  }
+}
 
 
 
