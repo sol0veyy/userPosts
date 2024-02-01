@@ -1,5 +1,7 @@
-import { FORMERR } from "dns"
-import "./style.css"
+import { useRouter } from "next/navigation";
+import "../style/style.css"
+import { useState } from "react";
+import { signup } from "@/http/user";
 
 export default function Page() {
     const router = useRouter();
